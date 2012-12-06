@@ -23,26 +23,29 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define KEYCODE_H
 
 
-#define IS_ERROR(code)           (KC_ROLL_OVER <= (code) && (code) <= KC_UNDEFINED)
-#define IS_ANY(code)             (KC_A         <= (code) && (code) <= 0xFF)
-#define IS_KEY(code)             (KC_A         <= (code) && (code) <= KC_EXSEL)
-#define IS_MOD(code)             (KC_LCTRL     <= (code) && (code) <= KC_RGUI)
+#define IS_ERROR(code)            (KC_ROLL_OVER <= (code) && (code) <= KC_UNDEFINED)
+#define IS_ANY(code)              (KC_A <= (code) && (code) <= 0xFF)
+#define IS_KEY(code)              (KC_A <= (code) && (code) <= KC_EXSEL)
+#define IS_MOD(code)              (KC_LCTRL <= (code) && (code) <= KC_RGUI)
 
-#define IS_FN(code)              (KC_FN0       <= (code) && (code) <= KC_FN7)
-#define IS_MOUSEKEY(code)        (KC_MS_UP     <= (code) && (code) <= KC_MS_ACCEL2)
-#define IS_MOUSEKEY_MOVE(code)   (KC_MS_UP     <= (code) && (code) <= KC_MS_RIGHT)
-#define IS_MOUSEKEY_BUTTON(code) (KC_MS_BTN1   <= (code) && (code) <= KC_MS_BTN5)
-#define IS_MOUSEKEY_WHEEL(code)  (KC_MS_WH_UP  <= (code) && (code) <= KC_MS_WH_RIGHT)
-#define IS_MOUSEKEY_ACCEL(code)  (KC_MS_ACCEL0 <= (code) && (code) <= KC_MS_ACCEL2)
+#define IS_FN(code)               (KC_FN0 <= (code) && (code) <= KC_FN7)
+#define IS_PRO(code)              (KC_PRO0 <= (code) && (code) <= KC_PRO7)
+#define IS_MOUSEKEY(code)         (KC_MS_UP <= (code) && (code) <= KC_MS_ACCEL2)
+#define IS_MOUSEKEY_MOVE(code)    (KC_MS_UP <= (code) && (code) <= KC_MS_RIGHT)
+#define IS_MOUSEKEY_BUTTON(code)  (KC_MS_BTN1 <= (code) && (code) <= KC_MS_BTN5)
+#define IS_MOUSEKEY_WHEEL(code)   (KC_MS_WH_UP <= (code) && (code) <= KC_MS_WH_RIGHT)
+#define IS_MOUSEKEY_ACCEL(code)   (KC_MS_ACCEL0 <= (code) && (code) <= KC_MS_ACCEL2)
 
-#define IS_SPECIAL(code)         ((0xB0 <= (code) && (code) <= 0xDF) || (0xE8 <= (code) && (code) <= 0xFF))
-#define IS_CONSUMER(code)        (KC_MUTE      <= (code) && (code) <= KC_WFAV)
-#define IS_SYSTEM(code)          (KC_POWER     <= (code) && (code) <= KC_WAKE)
+#define IS_SPECIAL(code)          ((0xB0 <= (code) && (code) <= 0xDF) || (0xE8 <= (code) && (code) <= 0xFF))
+#define IS_CONSUMER(code)         (KC_MUTE      <= (code) && (code) <= KC_WFAV)
+#define IS_SYSTEM(code)           (KC_POWER     <= (code) && (code) <= KC_WAKE)
 
-#define MOD_BIT(code)   (1<<MOD_INDEX(code))
-#define MOD_INDEX(code) ((code) & 0x07)
-#define FN_BIT(code)    (1<<FN_INDEX(code))
-#define FN_INDEX(code)  ((code) - KC_FN0)
+#define MOD_BIT(code)             (1 << MOD_INDEX(code))
+#define MOD_INDEX(code)           ((code) & 0x07)
+#define FN_BIT(code)              (1 << FN_INDEX(code))
+#define FN_INDEX(code)            ((code) - KC_FN0)
+#define PRO_BIT(code)             (1 << PRO_INDEX(code))
+#define PRO_INDEX(code)           ((code) - KC_PRO7)
 
 
 /*
@@ -442,7 +445,16 @@ enum internal_special_keycodes {
     /* Mousekey accel */
     KC_MS_ACCEL0,
     KC_MS_ACCEL1,
-    KC_MS_ACCEL2        /* 0xFF */
+    KC_MS_ACCEL2,       /* 0xFF */
+
+    KC_PRO0             = 0x100,
+    KC_PRO1,
+    KC_PRO2,
+    KC_PRO3,
+    KC_PRO4,
+    KC_PRO5,
+    KC_PRO6,
+    KC_PRO7,
 };
 
 #endif /* KEYCODE_H */
