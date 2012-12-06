@@ -25,6 +25,9 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 /* keycode in specific layer */
 uint8_t keymap_get_keycode(uint8_t layer, uint8_t row, uint8_t col);
 
+/* keycode in specific layer or profile*/
+uint8_t keymap_get_keycode(uint8_t profile, uint8_t layer, uint8_t row, uint8_t col);
+
 /* layer to move during press Fn key */
 uint8_t keymap_fn_layer(uint8_t fn_bits);
 
