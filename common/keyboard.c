@@ -56,6 +56,14 @@ uint8_t default_layer = 0;
 uint8_t current_layer = 0;
 #endif
 
+#ifdef KEYMAP_DEFAULT_PROFILE
+uint8_t default_profile = KEYMAP_DEFAULT_PROFILE;
+uint8_t current_profile = KEYMAP_DEFAULT_PROFILE;
+#else
+uint8_t default_profile = 0;
+uint8_t current_profile = 0;
+#endif
+
 /* keyboard internal states */
 static kbdstate_t kbdstate = IDLE;
 static uint8_t fn_state_bits = 0;
