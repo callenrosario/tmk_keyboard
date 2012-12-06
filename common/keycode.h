@@ -454,7 +454,7 @@ enum internal_special_keycodes {
     KC_PRO4,
     KC_PRO5,
     KC_PRO6,
-    KC_PRO7,
+    KC_PRO7,            /* 0x107 */
 };
 
 #endif /* KEYCODE_H */

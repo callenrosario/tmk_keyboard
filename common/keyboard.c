@@ -43,6 +43,7 @@ typedef enum keykind {
     FNK_DOWN, FNK_UP,
     KEY_DOWN, KEY_UP,
     MOD_DOWN, MOD_UP,
+    PRO_DOWN, PRO_UP
 } keykind_t;
 
 typedef enum { IDLE, DELAYING, WAITING, PRESSING } kbdstate_t;
@@ -67,6 +68,7 @@ uint8_t current_profile = 0;
 /* keyboard internal states */
 static kbdstate_t kbdstate = IDLE;
 static uint8_t fn_state_bits = 0;
+static uint16_t pro_state_bits = 0;
 static keyrecord_t delayed_fn;
 static keyrecord_t waiting_key;
 
@@ -90,6 +92,7 @@ static inline keykind_t get_keykind(uint8_t code, bool pressed)
         else
             return (pressed ? FN_DOWN : FN_UP);
     }
+    if IS_PRO(code)         return (pressed ? PRO_DOWN : PRO_UP);
     if IS_MOUSEKEY(code)    return (pressed ? KEY_DOWN : KEY_UP);
     if IS_SYSTEM(code)      return (pressed ? KEY_DOWN : KEY_UP);
     if IS_CONSUMER(code)    return (pressed ? KEY_DOWN : KEY_UP);
@@ -159,6 +162,20 @@ static bool layer_switch_off(uint8_t code)
         return true;
     }
     return false;
+}
+
+static void profile_switch(uint8_t code)
+{
+    if (!IS_PRO(code)) return;
+    pro_state_bits |= PRO_BIT(code);
+    uint16_t new_profile = (pro_state_bits ? keymap_profile(biton(pro_state_bits)) : default_profile);
+    if (current_profile != new_profile) {
+        Kdebug("Profile Switch(on): "); Kdebug_hex(current_profile);
+        Kdebug(" -> "); Kdebug_hex(new_profile); Kdebug("\n");
+
+        clear_keyboard_but_mods();
+        current_profile = new_profile;
+    }
 }
 
 static void register_code(uint8_t code)
@@ -351,7 +368,7 @@ static void unregister_code(uint8_t code)
 
 static inline void process_key(keyevent_t event)
 {
-    uint8_t code = keymap_get_keycode(current_layer, event.key.row, event.key.col);
+    uint8_t code = keymap_get_keycode(default_profile, current_layer, event.key.row, event.key.col);
     keykind_t kind = get_keykind(code, event.pressed);
 
     uint8_t tmp_mods;
@@ -401,6 +418,11 @@ static inline void process_key(keyevent_t event)
                 case MOD_UP:
                     unregister_code(code);
                     break;
+                case PRO_DOWN:
+                    profile_switch(code);
+                    break;
+                case PRO_UP:
+                    break;
                 default:
                     break;
             }
@@ -435,6 +457,11 @@ static inline void process_key(keyevent_t event)
                     unregister_code(code);
                     if (!anykey_sent_to_host())
                         NEXT(IDLE);
+                    break;
+                case PRO_DOWN:
+                    profile_switch(code);
+                    break;
+                case PRO_UP:
                     break;
                 default:
                     break;
@@ -478,6 +505,10 @@ static inline void process_key(keyevent_t event)
                 case KEY_UP:
                 case MOD_UP:
                     unregister_code(code);
+                    break;
+                case PRO_DOWN:
+                    break;
+                case PRO_UP:
                     break;
                 default:
                     break;
@@ -542,6 +573,10 @@ static inline void process_key(keyevent_t event)
                     break;
                 case MOD_UP:
                     unregister_code(code);
+                    break;
+                case PRO_DOWN:
+                    break;
+                case PRO_UP:
                     break;
                 default:
                     break;
