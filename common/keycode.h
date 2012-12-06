@@ -45,7 +45,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define FN_BIT(code)              (1 << FN_INDEX(code))
 #define FN_INDEX(code)            ((code) - KC_FN0)
 #define PRO_BIT(code)             (1 << PRO_INDEX(code))
-#define PRO_INDEX(code)           ((code) - KC_PRO7)
+#define PRO_INDEX(code)           ((code) - KC_PRO0)
 
 
 /*
@@ -413,7 +413,16 @@ enum internal_special_keycodes {
     KC_WWW_STOP,
     KC_WWW_REFRESH,     /* 0xC0 */
     KC_WWW_FAVORITES,   /* 0xC1 */
-                        /* 0xC2-DF vacant for future use */
+
+    KC_PRO0             = 0xC2,
+    KC_PRO1,
+    KC_PRO2,
+    KC_PRO3,
+    KC_PRO4,
+    KC_PRO5,
+    KC_PRO6,
+    KC_PRO7,            /* 0xC9 */
+                        /* 0xCA-DF vacant for future use */
 
     /* 0xE0-E7 for Modifiers. DO NOT USE. */
 
@@ -446,15 +455,6 @@ enum internal_special_keycodes {
     KC_MS_ACCEL0,
     KC_MS_ACCEL1,
     KC_MS_ACCEL2,       /* 0xFF */
-
-    KC_PRO0             = 0x100,
-    KC_PRO1,
-    KC_PRO2,
-    KC_PRO3,
-    KC_PRO4,
-    KC_PRO5,
-    KC_PRO6,
-    KC_PRO7,            /* 0x107 */
 };
 
 #endif /* KEYCODE_H */

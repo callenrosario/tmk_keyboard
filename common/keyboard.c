@@ -68,7 +68,7 @@ uint8_t current_profile = 0;
 /* keyboard internal states */
 static kbdstate_t kbdstate = IDLE;
 static uint8_t fn_state_bits = 0;
-static uint16_t pro_state_bits = 0;
+static uint8_t pro_state_bits = 0;
 static keyrecord_t delayed_fn;
 static keyrecord_t waiting_key;
 
@@ -86,12 +86,15 @@ static inline keykind_t get_keykind(uint8_t code, bool pressed)
 {
     if IS_KEY(code)         return (pressed ? KEY_DOWN : KEY_UP);
     if IS_MOD(code)         return (pressed ? MOD_DOWN : MOD_UP);
+    /*
     if IS_FN(code) {
         if (keymap_fn_keycode(FN_INDEX(code)))
             return (pressed ? FNK_DOWN : FNK_UP);
         else
             return (pressed ? FN_DOWN : FN_UP);
     }
+    */
+    if IS_FN(code)          return (pressed ? FN_DOWN : FN_UP);
     if IS_PRO(code)         return (pressed ? PRO_DOWN : PRO_UP);
     if IS_MOUSEKEY(code)    return (pressed ? KEY_DOWN : KEY_UP);
     if IS_SYSTEM(code)      return (pressed ? KEY_DOWN : KEY_UP);
@@ -167,10 +170,10 @@ static bool layer_switch_off(uint8_t code)
 static void profile_switch(uint8_t code)
 {
     if (!IS_PRO(code)) return;
-    pro_state_bits |= PRO_BIT(code);
-    uint16_t new_profile = (pro_state_bits ? keymap_profile(biton(pro_state_bits)) : default_profile);
+    pro_state_bits = PRO_BIT(code);
+    uint8_t new_profile = (pro_state_bits ? keymap_profile(biton(pro_state_bits)) : default_profile);
     if (current_profile != new_profile) {
-        Kdebug("Profile Switch(on): "); Kdebug_hex(current_profile);
+        Kdebug("Profile Switch: "); Kdebug_hex(current_profile);
         Kdebug(" -> "); Kdebug_hex(new_profile); Kdebug("\n");
 
         clear_keyboard_but_mods();
@@ -193,6 +196,12 @@ static void register_code(uint8_t code)
     else if IS_FN(code) {
         if (!command_proc(keymap_fn_keycode(FN_INDEX(code)))) {
             host_add_key(keymap_fn_keycode(FN_INDEX(code)));
+            host_send_keyboard_report();
+        }
+    }
+    else if IS_PRO(code) {
+        if (!command_proc(keymap_profile(PRO_INDEX(code)))) {
+            host_add_key(keymap_profile_keycode(PRO_INDEX(code)));
             host_send_keyboard_report();
         }
     }
@@ -294,6 +303,10 @@ static void unregister_code(uint8_t code)
         host_del_key(keymap_fn_keycode(FN_INDEX(code)));
         host_send_keyboard_report();
     }
+    else if IS_PRO(code) {
+        host_del_key(keymap_profile_keycode(PRO_INDEX(code)));
+        host_send_keyboard_report();
+    }
     else if IS_MOUSEKEY(code) {
 #ifdef MOUSEKEY_ENABLE
         mousekey_off(code);
@@ -368,7 +381,7 @@ static void unregister_code(uint8_t code)
 
 static inline void process_key(keyevent_t event)
 {
-    uint8_t code = keymap_get_keycode(default_profile, current_layer, event.key.row, event.key.col);
+    uint8_t code = keymap_get_keycode(current_profile, current_layer, event.key.row, event.key.col);
     keykind_t kind = get_keykind(code, event.pressed);
 
     uint8_t tmp_mods;
@@ -443,9 +456,9 @@ static inline void process_key(keyevent_t event)
                     if (layer_switch_off(code)) {
                         NEXT(IDLE);
                     } else {
-                        unregister_code(code);
-                        if (!anykey_sent_to_host())
-                            NEXT(IDLE);
+                      unregister_code(code);
+                      if (!anykey_sent_to_host())
+                          NEXT(IDLE);
                     }
                     break;
                 case KEY_DOWN:
@@ -507,6 +520,7 @@ static inline void process_key(keyevent_t event)
                     unregister_code(code);
                     break;
                 case PRO_DOWN:
+                    profile_switch(code);
                     break;
                 case PRO_UP:
                     break;
@@ -575,6 +589,7 @@ static inline void process_key(keyevent_t event)
                     unregister_code(code);
                     break;
                 case PRO_DOWN:
+                    profile_switch(code);
                     break;
                 case PRO_UP:
                     break;
@@ -662,6 +677,7 @@ void keyboard_task(void)
             Kdebug("FAIL SAFE: clear all keys(default layer).\n");
             clear_keyboard();
             current_layer = default_layer;
+            current_profile = (pro_state_bits ? keymap_profile(biton(pro_state_bits)) : default_profile);
         }
     }
 

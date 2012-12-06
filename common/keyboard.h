@@ -48,6 +48,8 @@ typedef struct {
 
 extern uint8_t current_layer;
 extern uint8_t default_layer;
+extern uint8_t current_profile;
+extern uint8_t default_profile;
 
 void keyboard_init(void);
 void keyboard_task(void);

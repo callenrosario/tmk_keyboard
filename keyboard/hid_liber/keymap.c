@@ -88,7 +88,7 @@ static const uint8_t PROGMEM fn_keycode[] = {
 };
 
 // Assign Pro key(0-7) to a profile to switch to when the Fn key is pressed.
-static const uint8_t PROGMEM profile[] = {
+static const uint8_t PROGMEM profiles[] = {
     0,              // PRO0
     1,              // PRO1
     2,              // PRO2
@@ -97,6 +97,18 @@ static const uint8_t PROGMEM profile[] = {
     5,              // PRO5
     6,              // PRO6
     7               // PRO7
+};
+
+// Assign an alternate keycode to the PRO key.
+static const uint8_t PROGMEM profile_keycode[] = {
+    KC_NO,          // PRO0
+    KC_NO,          // PRO1
+    KC_NO,          // PRO2
+    KC_NO,          // PRO3
+    KC_NO,          // PRO4
+    KC_NO,          // PRO5
+    KC_NO,          // PRO6
+    KC_NO           // PRO7
 };
 
 /*
@@ -143,7 +155,7 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
       LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
@@ -178,7 +190,7 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
@@ -207,7 +219,7 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
       LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
@@ -242,12 +254,76 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
       LCTL, LALT, LGUI,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
+  },
+
+  { /* Profile 2: Default Profile 
+     *
+     * ANSI:
+     *
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
+      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
+      LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
+      LGUI, LALT, LCTL,             SPC,                RGUI, RALT, APP, FN1, LEFT, DOWN, RGHT),
+
+    /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
+     *  KEYMAP(\
+     *    ESC, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PSCR, SLCK, BRK, \
+     *    GRV, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, MINS, EQL, BSPC, INS, HOME, PGUP, \
+     *    TAB, Q, W, E, R, T, Y, U, I, O, P, LBRC, RBRC, NUHS, DEL, END, PGDN, \
+     *    CAPS, A, S, D, F, G, H, J, K, L, SCLN, QUOT, ENT, \
+     *    LSFT, NUBS, Z, X, C, V, B, N, M, COMM, DOT, SLSH, RSFT, UP, \
+     *    LCTL, FN1, LALT, SPC, RALT, RGUI, APP, RCTL, LEFT, DOWN, RGHT),
+     */
+
+    /* Layer 0: Default Layer
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Slp|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|Mut|V- |V+ |Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|MSt|Ply|Prv|Nxt|Media| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|Clc|  V|  B|  N|  M|  ,|  .|  /|Caps      |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
+      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
+      FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
+      LGUI, LALT, LCTL,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
   },
 };
 
@@ -262,12 +338,17 @@ uint8_t keymap_fn_layer(uint8_t index)
     return pgm_read_byte(&fn_layer[index]);
 }
 
-uint8_t keymap_profile(uint8_t index)
-{
-    return pgm_read_byte(&profile[index]);
-}
-
 uint8_t keymap_fn_keycode(uint8_t index)
 {
     return pgm_read_byte(&fn_keycode[index]);
+}
+
+uint8_t keymap_profile(uint8_t index)
+{
+    return pgm_read_byte(&profiles[index]);
+}
+
+uint8_t keymap_profile_keycode(uint8_t index)
+{
+    return pgm_read_byte(&profile_keycode[index]);
 }
