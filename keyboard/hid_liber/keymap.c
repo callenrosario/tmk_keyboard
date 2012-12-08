@@ -254,8 +254,8 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
@@ -318,8 +318,8 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
@@ -381,8 +381,8 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
