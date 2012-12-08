@@ -392,10 +392,11 @@ enum internal_special_keycodes {
     KC_SYSTEM_POWER     = 0xA5,
     KC_SYSTEM_SLEEP,
     KC_SYSTEM_WAKE,     /* 0xA7 */
-                        /* 0xA8-AF */
+                        /* 0xA8-AE */
 
     /* Consumer Page */
-    KC_AUDIO_MUTE       = 0xB0,
+    KC_AUDIO_MUTE       = 0xAF,
+    KC_EJECT,
     KC_AUDIO_VOL_UP,
     KC_AUDIO_VOL_DOWN,
     KC_MEDIA_NEXT_TRACK,
@@ -423,18 +424,27 @@ enum internal_special_keycodes {
     KC_PRO6,
     KC_PRO7,            /* 0xC9 */
                         /* 0xCA-DF vacant for future use */
-
-    /* 0xE0-E7 for Modifiers. DO NOT USE. */
-
     /* Layer Switching */
-    KC_FN0              = 0xE8,
+    KC_FN0, /*0xCA*/
     KC_FN1,
     KC_FN2,
     KC_FN3,
     KC_FN4,
     KC_FN5,
-    KC_FN6,
-    KC_FN7,             /* 0xEF */
+    KC_FN6, /* 0xD0 */
+    KC_FN7,
+    
+    /* 0xE0-E7 for Modifiers. DO NOT USE. */
+
+
+    KC_PPAU             = 0xE8,
+    KC_SPCD,
+    KC_PSNG,
+    KC_NSNG,
+    KC_EJCT             = 0xA1,
+    KC_VLUP             = 0xA2,
+    KC_VDWN             = 0x9A,
+    KC_MUCD,             /* 0xEF */
 
     /* Mousekey */
     KC_MS_UP            = 0xF0,

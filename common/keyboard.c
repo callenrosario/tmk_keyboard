@@ -214,6 +214,9 @@ static void register_code(uint8_t code)
     else if IS_CONSUMER(code) {
         uint16_t usage = 0;
         switch (code) {
+            case KC_EJECT:
+                usage = TRANSPORT_EJECT;
+                break;
             case KC_AUDIO_MUTE:
                 usage = AUDIO_MUTE;
                 break;
