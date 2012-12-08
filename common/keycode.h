@@ -436,16 +436,6 @@ enum internal_special_keycodes {
     
     /* 0xE0-E7 for Modifiers. DO NOT USE. */
 
-
-    KC_PPAU             = 0xE8,
-    KC_SPCD,
-    KC_PSNG,
-    KC_NSNG,
-    KC_EJCT             = 0xA1,
-    KC_VLUP             = 0xA2,
-    KC_VDWN             = 0x9A,
-    KC_MUCD,             /* 0xEF */
-
     /* Mousekey */
     KC_MS_UP            = 0xF0,
     KC_MS_DOWN,
