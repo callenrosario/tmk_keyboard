@@ -272,11 +272,11 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------. ,-----------.
      * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
      * |-----------------------------------------------------------| |-----------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD|
+     * |Tab  |  Q|  W|  F|  P|  G|  J|  L|  U|  Y|  ;|  [|  ]|    \| |Del|End|PgD|
      * |-----------------------------------------------------------| `-----------'
-     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |Backsp|  A|  R|  S|  T|  D|  H|  N|  E|  I|  O|  '|Return  |              
      * |-----------------------------------------------------------|     ,---.    
-     * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
+     * |Shft    |  Z|  X|  C|  V|  B|  K|  M|  ,|  .|  /|Shift     |     |Up |    
      * |-----------------------------------------------------------| ,-----------.
      * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
      * `-----------------------------------------------------------' `-----------'
@@ -285,9 +285,9 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(\
       ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  EJECT, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
-      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
-      LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
-      LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
+      TAB,   Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
+      LCTL,   A,   R,   S,   T,   D,   H,   N,   E,   I, O, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,   C,   V,   B,   K,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
       LGUI, LALT, LCTL,             SPC,                RGUI, RALT, FN1, RCTL, LEFT, DOWN, RGHT),
 
     /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
