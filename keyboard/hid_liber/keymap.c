@@ -134,12 +134,12 @@ static const uint8_t PROGMEM profile_keycode[] = {
  */
 
 static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
-  { /* Profile 0: Default Profile 
+  { /* Profile 0: Mac QWERTY Profile 
      *
      * ANSI:
      *
      * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
-     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |F13|F14|EJC|
      * `---'   `---------------' `---------------' `---------------' `-----------'
      * ,-----------------------------------------------------------. ,-----------.
      * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
@@ -150,17 +150,17 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|     ,---.    
      * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
      * |-----------------------------------------------------------| ,-----------.
-     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * |Ctl|Alt|Gui|          Space                |Gui|Alt|FN1|Ctl| |Lef|Dow|Rig|
      * `-----------------------------------------------------------' `-----------'
      */
 
     KEYMAP(\
-      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       F13, F14,  EJECT, \
       GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
       LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
-      LCTL, LGUI, LALT,             SPC,                RALT, RGUI, APP, FN1, LEFT, DOWN, RGHT),
+      LCTL, LALT, LGUI,            SPC,               RGUI, RALT, FN1, RCTL, LEFT, DOWN, RGHT),
 
     /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
      *  KEYMAP(\
@@ -190,79 +190,15 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
-      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
-      FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
-      LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
-      LCTL, LGUI, LALT,             SPC,                RALT, RGUI, APP, RCTL, LEFT, DOWN, RGHT),
-  },
-
-  { /* Profile 1: Default Profile 
-     *
-     * ANSI:
-     *
-     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
-     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
-     * `---'   `---------------' `---------------' `---------------' `-----------'
-     * ,-----------------------------------------------------------. ,-----------.
-     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
-     * |-----------------------------------------------------------| |-----------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD|
-     * |-----------------------------------------------------------| `-----------'
-     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
-     * |-----------------------------------------------------------|     ,---.    
-     * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
-     * |-----------------------------------------------------------| ,-----------.
-     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
-     * `-----------------------------------------------------------' `-----------'
-     */
-
-    KEYMAP(\
-      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
-      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
-      LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
-      LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
-      LCTL, LALT, LGUI,             SPC,                RGUI, RALT, APP, FN1, LEFT, DOWN, RGHT),
-
-    /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
-     *  KEYMAP(\
-     *    ESC, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PSCR, SLCK, BRK, \
-     *    GRV, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, MINS, EQL, BSPC, INS, HOME, PGUP, \
-     *    TAB, Q, W, E, R, T, Y, U, I, O, P, LBRC, RBRC, NUHS, DEL, END, PGDN, \
-     *    CAPS, A, S, D, F, G, H, J, K, L, SCLN, QUOT, ENT, \
-     *    LSFT, NUBS, Z, X, C, V, B, N, M, COMM, DOT, SLSH, RSFT, UP, \
-     *    LCTL, FN1, LALT, SPC, RALT, RGUI, APP, RCTL, LEFT, DOWN, RGHT),
-     */
-
-    /* Layer 0: Default Layer
-     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
-     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Slp|
-     * `---'   `---------------' `---------------' `---------------' `-----------'
-     * ,-----------------------------------------------------------. ,-----------.
-     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|Mut|V- |V+ |Backsp | |Ins|Hom|PgU|
-     * |-----------------------------------------------------------| |-----------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|MSt|Ply|Prv|Nxt|Media| |Del|End|PgD|
-     * |-----------------------------------------------------------| `-----------'
-     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
-     * |-----------------------------------------------------------|     ,---.    
-     * |Shft    |  Z|  X|Clc|  V|  B|  N|  M|  ,|  .|  /|Caps      |     |Up |    
-     * |-----------------------------------------------------------| ,-----------.
-     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
-     * `-----------------------------------------------------------' `-----------'
-     */
-
-    KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
       LCTL, LALT, LGUI,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
   },
 
-  { /* Profile 2: Default Profile 
+  { /* Profile 1: Mac Dvorak Profile 
      *
      * ANSI:
      *
@@ -270,25 +206,25 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
      * `---'   `---------------' `---------------' `---------------' `-----------'
      * ,-----------------------------------------------------------. ,-----------.
-     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  [|  ]|Backsp | |Ins|Hom|PgU|
      * |-----------------------------------------------------------| |-----------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD|
+     * |Tab  |  '|  ,|  .|  P|  Y|  F|  G|  C|  R|  L|  /|  =|    \| |Del|End|PgD|
      * |-----------------------------------------------------------| `-----------'
-     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |Ctl   |  A|  O|  E|  U|  I|  D|  H|  T|  N|  S|  -|Return  |              
      * |-----------------------------------------------------------|     ,---.    
-     * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
+     * |Shft    |  ;|  Q|  J|  K|  X|  B|  M|  W|  V|  Z|Shift     |     |Up |    
      * |-----------------------------------------------------------| ,-----------.
      * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
      * `-----------------------------------------------------------' `-----------'
      */
 
     KEYMAP(\
-      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
-      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
-      LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
-      LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
-      LGUI, LALT, LCTL,             SPC,                RGUI, RALT, APP, FN1, LEFT, DOWN, RGHT),
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  EJECT, \
+      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, LBRC,  RBRC, BSPC,  INS, HOME, PGUP, \
+      TAB,   QUOT,   COMM,   DOT,   P,   Y,   F,   G,   C,   R,   L, SLSH, EQL, BSLS,  DEL,  END, PGDN, \
+      LCTL,   A,   O,   E,   U,   I,   D,   H,   T,   N, S, MINS,       ENT,                   \
+      LSFT, NO,   SCLN,   Q,   J,   K,   X,   B,   M, W, V, Z,      RSFT,         UP,       \
+      LCTL, LALT, LGUI,             SPC,                RGUI, RALT, FN1, RCTL, LEFT, DOWN, RGHT),
 
     /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
      *  KEYMAP(\
@@ -318,13 +254,140 @@ static const uint8_t PROGMEM keymaps[][NUM_LAYERS][MATRIX_ROWS][MATRIX_COLS] = {
      */
 
     KEYMAP(\
-      ESC,  PRO0,  PRO1,  PRO2,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK, SLEP, \
-      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
+      FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
+      LCTL, LALT, LGUI,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
+  },
+
+  { /* Profile 2: Mac Colemak Profile 
+     *
+     * ANSI:
+     *
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  F|  P|  G|  J|  L|  U|  Y|  ;|  [|  ]|    \| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |Backsp|  A|  R|  S|  T|  D|  H|  N|  E|  I|  O|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|  C|  V|  B|  K|  M|  ,|  .|  /|Shift     |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  EJECT, \
+      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   F,   P,   G,   J,   L,   U,   Y,   SCLN, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
+      BSPC,   A,   R,   S,   T,   D,   H,   N,   E,   I, O, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,   C,   V,   B,   K,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
+      LCTL, LALT, LGUI,             SPC,                RGUI, RALT, FN1, RCTL, LEFT, DOWN, RGHT),
+
+    /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
+     *  KEYMAP(\
+     *    ESC, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PSCR, SLCK, BRK, \
+     *    GRV, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, MINS, EQL, BSPC, INS, HOME, PGUP, \
+     *    TAB, Q, W, E, R, T, Y, U, I, O, P, LBRC, RBRC, NUHS, DEL, END, PGDN, \
+     *    CAPS, A, S, D, F, G, H, J, K, L, SCLN, QUOT, ENT, \
+     *    LSFT, NUBS, Z, X, C, V, B, N, M, COMM, DOT, SLSH, RSFT, UP, \
+     *    LCTL, FN1, LALT, SPC, RALT, RGUI, APP, RCTL, LEFT, DOWN, RGHT),
+     */
+
+    /* Layer 0: Default Layer
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Slp|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|Mut|V- |V+ |Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|MSt|Ply|Prv|Nxt|Media| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|Clc|  V|  B|  N|  M|  ,|  .|  /|Caps      |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
       TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
       FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
       LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
       LGUI, LALT, LCTL,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
   },
+  { /* Profile 3: Windows QWERTY Profile 
+     *
+     * ANSI:
+     *
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Pau|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|    \| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9, F10,  F11,  F12,       PSCR, SLCK,  BRK, \
+      GRV,   1,   2,   3,   4,   5,   6,   7,   8,   9,   0, MINS,  EQL, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P, LBRC, RBRC, BSLS,  DEL,  END, PGDN, \
+      LCTL,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,   C,   V,   B,   N,   M, COMM, DOT, SLSH,      RSFT,         UP,       \
+      LGUI, LALT, LCTL,             SPC,                RGUI, RALT, FN1, RCTL, LEFT, DOWN, RGHT),
+
+    /*  EXAMPLE ISO keymap, see the NUBS and NUHS keycodes 
+     *  KEYMAP(\
+     *    ESC, F1, F2, F3, F4, F5, F6, F7, F8, F9, F10, F11, F12, PSCR, SLCK, BRK, \
+     *    GRV, 1, 2, 3, 4, 5, 6, 7, 8, 9, 0, MINS, EQL, BSPC, INS, HOME, PGUP, \
+     *    TAB, Q, W, E, R, T, Y, U, I, O, P, LBRC, RBRC, NUHS, DEL, END, PGDN, \
+     *    CAPS, A, S, D, F, G, H, J, K, L, SCLN, QUOT, ENT, \
+     *    LSFT, NUBS, Z, X, C, V, B, N, M, COMM, DOT, SLSH, RSFT, UP, \
+     *    LCTL, FN1, LALT, SPC, RALT, RGUI, APP, RCTL, LEFT, DOWN, RGHT),
+     */
+
+    /* Layer 0: Default Layer
+     * ,---.   ,---------------. ,---------------. ,---------------. ,-----------.
+     * |Esc|   |F1 |F2 |F3 |F4 | |F5 |F6 |F7 |F8 | |F9 |F10|F11|F12| |PrS|ScL|Slp|
+     * `---'   `---------------' `---------------' `---------------' `-----------'
+     * ,-----------------------------------------------------------. ,-----------.
+     * |~  |  1|  2|  3|  4|  5|  6|  7|  8|  9|Mut|V- |V+ |Backsp | |Ins|Hom|PgU|
+     * |-----------------------------------------------------------| |-----------|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|MSt|Ply|Prv|Nxt|Media| |Del|End|PgD|
+     * |-----------------------------------------------------------| `-----------'
+     * |FN1   |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|Return  |              
+     * |-----------------------------------------------------------|     ,---.    
+     * |Shft    |  Z|  X|Clc|  V|  B|  N|  M|  ,|  .|  /|Caps      |     |Up |    
+     * |-----------------------------------------------------------| ,-----------.
+     * |Ctl|Gui|Alt|          Space                |Alt|Gui|App|Ctl| |Lef|Dow|Rig|
+     * `-----------------------------------------------------------' `-----------'
+     */
+
+    KEYMAP(\
+      ESC,  F1,  F2,  F3,  F4,  F5,  F6,  MPRV,  MPLY,  MNXT, MUTE,  VOLD,  VOLU,       PSCR, SLCK, SLEP, \
+      GRV,  PRO0,  PRO1, PRO2,   PRO3,   5,   6,   7,   8,   9,MUTE, VOLD, VOLU, BSPC,  INS, HOME, PGUP, \
+      TAB,   Q,   W,   E,   R,   T,   Y,   U,   I,MSTP,MPLY, MPRV, MNXT, MSEL,  DEL,  END, PGDN, \
+      FN1,   A,   S,   D,   F,   G,   H,   J,   K,   L, SCLN, QUOT,       ENT,                   \
+      LSFT, NO,   Z,   X,CALC,   V,   B,   N,   M, COMM, DOT, SLSH,      CAPS,         UP,       \
+      LGUI, LALT, LCTL,             SPC,                RGUI, RALT, APP, RCTL, LEFT, DOWN, RGHT),
+  }
 };
 
 
