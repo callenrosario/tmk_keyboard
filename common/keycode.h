@@ -432,7 +432,7 @@ enum internal_special_keycodes {
     KC_FN4,
     KC_FN5,
     KC_FN6, /* 0xD0 */
-    KC_FN7,
+    KC_FN7, /* 0xD1 */
     
     /* 0xE0-E7 for Modifiers. DO NOT USE. */
 
